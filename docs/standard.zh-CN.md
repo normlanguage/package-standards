@@ -14,7 +14,7 @@
 
 ## 2. 仓库和模块命名
 
-正式库仓库名与 Module 名完全一致，使用小写、点分层名称，例如 `ui`、`ui.theme`、`ui.fx`、`ui.web`、`ui.fx.kit`、`micronaut.inject`、`orm.hibernate`。
+正式库仓库名与 Module 名完全一致，使用小写、点分层名称，例如 `ui`、`ui.theme`、`ui.desktop`、`ui.web`、`ui.desktop.kit`、`micronaut.inject`、`orm.hibernate`。
 
 - 不将点转换成连字符。
 - 不添加无信息的 `norm-`、`-norm`、`-lib`、`-package` 或版本后缀。
@@ -28,6 +28,8 @@
 
 通用协议按领域命名，协议实现放在协议之下，后端组件库继续细分。独立第三方绑定按上游库命名。
 
+UI 后端按面向应用的平台命名，例如 `ui.desktop`、`ui.web`；组件库沿用所属平台，例如 `ui.desktop.kit`。JavaFX、Vaadin 等实现技术在实现说明与类型绑定中表达，不作为 UI 平台模块的名称。
+
 点分层不隐含依赖、导出或自动加载，实际关系必须由 Module 声明。每一种公共类型只有一个定义来源，工具链已有的标准类型不在外部包重复绑定。不发布同内容的别名模块。
 
 ## 4. UI 职责边界
@@ -36,11 +38,11 @@
 | --- | --- |
 | `ui.theme` | 颜色衍生、主题模型和主题变化 |
 | `ui` | 通用组件协议、布局、状态、生命周期和配置 |
-| `ui.fx` | JavaFX 类型绑定及通用协议的 JavaFX 实现 |
+| `ui.desktop` | 桌面应用后端，包含 JavaFX 类型绑定及通用协议实现 |
 | `ui.web` | 通用协议的 Vaadin 实现 |
-| `ui.fx.kit` | JavaFX 具体组件和交互行为 |
+| `ui.desktop.kit` | 桌面组件和交互行为，当前基于 JavaFX |
 
-JavaFX 绑定由 `ui.fx` 统一拥有，不提供独立的 `javafx` 发布模块。其他组件库通过 `ui.fx` 的明确公共入口使用相关类型。
+JavaFX 绑定由 `ui.desktop` 统一拥有，不提供独立的 `javafx` 发布模块。其他组件库通过 `ui.desktop` 的明确公共入口使用相关类型。
 
 通用协议不能依赖具体后端。组件库发现通用能力缺口时，补充协议和后端实现，不另建一套基础能力。
 
