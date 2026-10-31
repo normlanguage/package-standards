@@ -112,7 +112,7 @@ README 负责发现和开始使用；API 以源码为准；docs 保存概念、�
 
 ## 10. 许可证和资源来源
 
-本规范仓库及 Norm UI 模块采用 MPL-2.0。其他仓库保留已确定的许可证；新增选择或变更由负责人决定，不由模板推断。
+本规范仓库及 Norm UI 模块采用 MPL-2.0。normlanguage 官方库中尚无既定许可证的自有封装代码统一采用 MPL-2.0。已有明确许可证的仓库沿用原协议。变更已确定的许可证由负责人决定。
 
 根目录提供正式 LICENSE 正文，README 链接该文件，适用的构建元数据使用一致的 SPDX 标识，发布产物携带许可证。许可证保持 UTF-8、LF 换行；生成副本由构建从根文件产生，不独立维护。资源路径按模块身份区分，避免多个依赖的同名文件冲突。执行规则见 [registry 打包入口](https://github.com/normlanguage/registry/tree/main/.github/actions/package-module)。
 
